@@ -1,3 +1,7 @@
+mv
+chmod
+pwd
+ping -c
 fts_read
 ps
 _exit
