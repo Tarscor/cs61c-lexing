@@ -1,8 +1,5 @@
-mv
-chmod
-pwd
-ping -c
-fts_read
+ls -ld
+man -k
 ps
 _exit
-interdiff
+sdiff
