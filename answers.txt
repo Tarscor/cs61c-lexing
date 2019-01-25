@@ -1,3 +1,4 @@
+ls -al
 fts_read
 ps
 _exit
