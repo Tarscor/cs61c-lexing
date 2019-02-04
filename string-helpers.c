@@ -75,8 +75,10 @@ int replace_escape_in_string(char* str) {
    function returns 0.
 */
 int is_alpha(char c) {
-  /* YOUR CODE HERE */
-  return 0;
+    if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {
+        return 1;
+    }
+    return 0;
 }
 
 /*
@@ -85,7 +87,9 @@ int is_alpha(char c) {
    (white)space character, the function returns 0.
 */
 int is_space(char c) {
-  /* YOUR CODE HERE */
+    if (c == ' ') {
+        return 1;
+    }
   return 0;
 }
 
@@ -94,8 +98,10 @@ int is_space(char c) {
    digit according to our grammar. If it is not, the function returns 0.
 */
 int is_digit(char c) {
-  /* YOUR CODE HERE */
-  return 0;
+    if (c >= '0' && c <= '9') {
+        return 1;
+    }
+    return 0;
 }
 
 /*
@@ -104,8 +110,10 @@ int is_digit(char c) {
    the function returns 0.
 */
 int is_identifier_component(char c) {
-  /* YOUR CODE HERE */
-  return 0;
+    if (is_alpha(c) || is_digit(c) || c == '_') {
+        return 1;
+    }
+    return 0;
 }
 
 /*
@@ -115,7 +123,14 @@ int is_identifier_component(char c) {
 */
 int is_valid_identifier(char* str) {
   /* YOUR CODE HERE */
-  return 0;
+    int n = 0;
+    while (n < sizeof (*str)) {
+        if (!is_valid_identifier(*str[n])) {
+            return 0;
+        }
+        n++;
+    }
+    return 1;
 }
 
 /*
@@ -125,6 +140,14 @@ int is_valid_identifier(char* str) {
    The returned character pointer should be null terminated.
 */
 char* str_concat(char** strings, size_t count) {
-  /* YOUR CODE HERE */
-  return NULL;
+    int len;
+    int m = 0;
+    for (int i = 0; i < count; i++) {
+        int n = 0;
+        while (n < sizeof (*strings) {
+            new += *strings[n];
+            m++;
+            n++;
+        }
+    }
 }
