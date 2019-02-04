@@ -124,7 +124,7 @@ int is_identifier_component(char c) {
 int is_valid_identifier(char* str) {
   /* YOUR CODE HERE */
     int n = 0;
-    while (n < sizeof (*str)) {
+    while (n < sizeof (str)) {
         if (!is_valid_identifier(*str[n])) {
             return 0;
         }
@@ -144,10 +144,11 @@ char* str_concat(char** strings, size_t count) {
     int m = 0;
     for (int i = 0; i < count; i++) {
         int n = 0;
-        while (n < sizeof (*strings) {
+        while (n < sizeof (*strings)) {
             new += *strings[n];
             m++;
             n++;
         }
     }
+   return NULL;
 }
