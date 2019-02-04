@@ -125,7 +125,7 @@ int is_valid_identifier(char* str) {
   /* YOUR CODE HERE */
     int n = 0;
     while (n < sizeof (str)) {
-        if (!is_valid_identifier(*str[n])) {
+        if (!is_identifier_component(str[n])) {
             return 0;
         }
         n++;
