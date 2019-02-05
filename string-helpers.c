@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "string-helpers.h"
@@ -125,7 +126,7 @@ int is_valid_identifier(char* str) {
   /* YOUR CODE HERE */
     int n = 0;
     while (n < sizeof (str)) {
-       printf("%s", str[n]);
+       printf("%d", str[n]);
         if (!is_identifier_component(str[n])) {
             return 0;
         }
