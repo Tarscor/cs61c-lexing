@@ -81,59 +81,37 @@ void testLOWERSTRCPY_Both(void) {;
 /* Simple test of replace_escape_in_character().
  */
 void testREPLACEESCAPECHAR_NoEscape(void) {
-  char* p1 = "n";
-  char* p2 = "0";
-  
   CU_ASSERT(replace_escape_in_character("n") == -1);
-  CU_ASSERT(replace_escape_in_character(p2) == -1);
+  CU_ASSERT(replace_escape_in_character("0") == -1);
 }
 void testREPLACEESCAPECHAR_Escaped(void) {
-  char* p3 = "\\n";
-  char* p4 = "\\t";
-  char* p5 = "\\0";
-  char* p6 = "\\\\";
-  char* p7 = "\\\'";
-  
-  CU_ASSERT(replace_escape_in_character(p3) == '\n');
-  CU_ASSERT(replace_escape_in_character(p4) == '\t');
-  CU_ASSERT(replace_escape_in_character(p5) == '\0');
-  CU_ASSERT(replace_escape_in_character(p6) == '\\');
-  CU_ASSERT(replace_escape_in_character(p7) == '\'');
+  CU_ASSERT(replace_escape_in_character("\\n") == '\n');
+  CU_ASSERT(replace_escape_in_character("\\t") == '\t');
+  CU_ASSERT(replace_escape_in_character("\\0") == '\0');
+  CU_ASSERT(replace_escape_in_character("\\\\") == '\\');
+  CU_ASSERT(replace_escape_in_character("\\\'") == '\'');
 }
 void testREPLACEESCAPECHAR_NotEscapedChar(void) {
-  char* p8 = "\\a";
-  char* p9 = "\\p";
-  CU_ASSERT(replace_escape_in_character(p8) == -1);
-  CU_ASSERT(replace_escape_in_character(p9) == -1);
+  CU_ASSERT(replace_escape_in_character("\\a") == -1);
+  CU_ASSERT(replace_escape_in_character("\\p") == -1);
 }
 
 /* Simple test of replace_escape_in_string().
  */
 void testREPLACEESCAPESTR_NoEscape(void) {
-  char* p1 = "n";
-  char* p2 = "0";
-
-  CU_ASSERT(replace_escape_in_string(p1) == -1);
-  CU_ASSERT(replace_escape_in_string(p2) == -1);
+  CU_ASSERT(replace_escape_in_string("n") == -1);
+  CU_ASSERT(replace_escape_in_string("0") == -1);
 }
 void testREPLACEESCAPESTR_Escaped(void) {
-  char* p3 = "\\n";
-  char* p4 = "\\t";
-  char* p5 = "\\0";
-  char* p6 = "\\\\";
-  char* p7 = "\\\"";
-
-  CU_ASSERT(replace_escape_in_string(p3) == '\n');
-  CU_ASSERT(replace_escape_in_string(p4) == '\t');
-  CU_ASSERT(replace_escape_in_string(p5) == '\0');
-  CU_ASSERT(replace_escape_in_string(p6) == '\\');
-  CU_ASSERT(replace_escape_in_string(p7) == '"');
+  CU_ASSERT(replace_escape_in_string("\\n") == '\n');
+  CU_ASSERT(replace_escape_in_string("\\t") == '\t');
+  CU_ASSERT(replace_escape_in_string("\\0") == '\0');
+  CU_ASSERT(replace_escape_in_string("\\\\") == '\\');
+  CU_ASSERT(replace_escape_in_string("\\\"") == '"');
 }
 void testREPLACEESCAPESTR_NotEscapedChar(void) {
-  char* p8 = "\\a";
-  char* p9 = "\\p";
-  CU_ASSERT(replace_escape_in_string(p8) == -1);
-  CU_ASSERT(replace_escape_in_string(p9) == -1);
+  CU_ASSERT(replace_escape_in_string("\\a") == -1);
+  CU_ASSERT(replace_escape_in_string("\\p") == -1);
 }
 
 /* Simple test of is_alpha().
