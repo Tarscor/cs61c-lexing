@@ -58,19 +58,22 @@ void testISDIGIT_EscChars(void) {
  */
 void testLOWERSTRCPY_Lower(void) {
   char* src = "hello";
-  char* dest = "";
+  char empty[6];
+  char* dest = empty;
   lower_strcpy(dest, src);
   CU_ASSERT(strcmp(dest, "hello") == 0);
 }
 void testLOWERSTRCPY_Upper(void) {
   char* src = "HELLO";
-  char* dest = "";
+  char empty[6];
+  char* dest = empty;
   lower_strcpy(dest, src);
   CU_ASSERT(strcmp(dest, "hello") == 0);
 }
 void testLOWERSTRCPY_Both(void) {;
   char* src = "HeLlO";
-  char* dest = "";
+  char empty[6];
+  char* dest = empty;
   lower_strcpy(dest, src);
   CU_ASSERT(strcmp(dest,  "hello") == 0);
 }
