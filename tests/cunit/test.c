@@ -189,7 +189,8 @@ void testISIDCOMP_EscChars(void) {
 /* Simple test of is_valid_identifier().
  */
 void testISVALIDID_Letters(void) {
-  CU_ASSERT_TRUE(is_valid_identifier("A") == 1);
+  printf("%d", is_valid_identifier("A"));
+  CU_ASSERT_TRUE(is_valid_identifier("A"));
   CU_ASSERT_TRUE(is_valid_identifier("Z"));
   CU_ASSERT_TRUE(is_valid_identifier("P"));
   CU_ASSERT_TRUE(is_valid_identifier("aZ"));
