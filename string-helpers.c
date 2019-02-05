@@ -127,7 +127,6 @@ int is_valid_identifier(char* str) {
     int n = 0;
     while (n < sizeof (str)) {
         if (!is_identifier_component(str[n])) {
-           printf("%c", str[n]);
            return 0;
         }
         n++;
