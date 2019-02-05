@@ -162,7 +162,7 @@ void testISSPACE_EscChars(void) {
 /* Simple test of is_identifier_component().
  */
 void testISIDCOMP_Letters(void) {
-  CU_ASSERT_TRUE(is_identifier_component('A'));
+  CU_ASSERT_TRUE(is_identifier_component('A') == 1);
   CU_ASSERT_TRUE(is_identifier_component('Z'));
   CU_ASSERT_TRUE(is_identifier_component('P'));
   CU_ASSERT_TRUE(is_identifier_component('a'));
