@@ -84,7 +84,7 @@ void testREPLACEESCAPECHAR_NoEscape(void) {
   char* p1 = "n";
   char* p2 = "0";
   
-  CU_ASSERT(replace_escape_in_character(p1) == -1);
+  CU_ASSERT(replace_escape_in_character("n") == -1);
   CU_ASSERT(replace_escape_in_character(p2) == -1);
 }
 void testREPLACEESCAPECHAR_Escaped(void) {
