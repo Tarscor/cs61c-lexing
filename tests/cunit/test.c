@@ -57,26 +57,20 @@ void testISDIGIT_EscChars(void) {
 /* Simple test of lower_strcopy().
  */
 void testLOWERSTRCPY_Lower(void) {
-  char hello[] = "hello";
-  char* src = hello;
-  char empty[6];
-  char* dest = empty;
+  char* src = "hello";
+  char* dest = "";
   lower_strcpy(dest, src);
   CU_ASSERT(strcmp(dest, "hello") == 0);
 }
 void testLOWERSTRCPY_Upper(void) {
-  char hello[] = "HELLO";
-  char* src = hello;
-  char empty[6];
-  char* dest = empty;
+  char* src = "HELLO";
+  char* dest = "";
   lower_strcpy(dest, src);
   CU_ASSERT(strcmp(dest, "hello") == 0);
 }
-void testLOWERSTRCPY_Both(void) {
-  char hello[] = "HeLlO";
-  char* src = hello;
-  char empty[6];
-  char* dest = empty;
+void testLOWERSTRCPY_Both(void) {;
+  char* src = "HeLlO";
+  char* dest = "";
   lower_strcpy(dest, src);
   CU_ASSERT(strcmp(dest,  "hello") == 0);
 }
@@ -338,7 +332,7 @@ CU_TestInfo isvalidid_tests[] = {{"Test letters", testISVALIDID_Letters},
 || CU_register_suites(suite5)
 || CU_register_suites(suite6) 
 || CU_register_suites(suite7) 
-|| CU_register_suites(suite7)) {
+|| CU_register_suites(suite8)) {
     CU_cleanup_registry();
     return CU_get_error();
   }
