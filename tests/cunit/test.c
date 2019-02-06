@@ -223,15 +223,18 @@ void testISVALIDID_All(void) {
 /* Simple test of str_concat().
  */
 void testSTRCONCAT_TwoStr(void) {
-  char** p = { "Hel", "lo" };
+  char* array[2] = { "Hel", "lo" };
+  char** pointer = array;
   CU_ASSERT(strcmp(str_concat(p, 2), "Hello") == 0);
 }
 void testSTRCONCAT_SingleChar(void) {
-  char** p = { "H", "e", "l", "l", "o" };
+  char* array[5] = { "H", "e", "l", "l", "o" };
+  char** pointer = array;
   CU_ASSERT(strcmp(str_concat(p, 5), "Hello") == 0);
 }
 void testSTRCONCAT_Long(void) {
-  char** p = { "Hello", " ", "Jedi", " ", "boi", "!" };
+  char* array[6] = { "Hello", " ", "Jedi", " ", "boi", "!" };
+  char** pointer = array;
   CU_ASSERT(strcmp(str_concat(p, 6), "Hello Jedi boi!") == 0);
 }
 
