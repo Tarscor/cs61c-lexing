@@ -108,7 +108,7 @@ int is_digit(char c) {
 /*
    Given a single character 'c', this function returns 1 if the character is
    a component of an identifier (letter, digit, or underscore). Otherwise,
-   the function returns 0.
+   the functionstrings returns 0.
 */
 int is_identifier_component(char c) {
     if (is_alpha(c) || is_digit(c) || c == '_') {
@@ -147,12 +147,13 @@ char* str_concat(char** strings, size_t count) {
     int len = 1;
     int n = 0;
     while (n < count) {
-        len += strlen (strings[count]);
+        len += strlen(strings[count]);
         n++;
     }
     char *concat = (char *) malloc(len * sizeof(char));
     while (*strings) {
-	while (**strings) {
+	int index = 0;
+	while (n < strlen(*strings)) {
 	    *concat = **strings;
 	    concat++; 
 	    **strings++;
