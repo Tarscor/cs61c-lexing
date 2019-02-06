@@ -224,16 +224,15 @@ void testISVALIDID_All(void) {
  */
 void testSTRCONCAT_TwoStr(void) {
   char* array[2] = { "Hel", "lo" };
-  char* concat = str_concat(array, 2);
-  CU_ASSERT(strcmp(concat, "Hello") == 0);
+  CU_ASSERT_TRUE(strcmp(str_concat(array, 2), "Hello") == 0);
 }
 void testSTRCONCAT_SingleChar(void) {
   char* array[5] = { "H", "e", "l", "l", "o" };
-  CU_ASSERT(strcmp(str_concat(array, 5), "Hello") == 0);
+  CU_ASSERT_TRUE(strcmp(str_concat(array, 5), "Hello") == 0);
 }
 void testSTRCONCAT_Long(void) {
   char* array[6] = { "Hello", " ", "Jedi", " ", "boi", "!" };
-  CU_ASSERT(strcmp(str_concat(array, 6), "Hello Jedi boi!") == 0);
+  CU_ASSERT_TRUE(strcmp(str_concat(array, 6), "Hello Jedi boi!") == 0);
 }
 
 /* The main() function for setting up and running the tests.
