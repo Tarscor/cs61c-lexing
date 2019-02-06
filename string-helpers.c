@@ -152,13 +152,13 @@ char* str_concat(char** strings, size_t count) {
     }
     char *concat = (char *) malloc(len * sizeof(char));
     while (*strings) {
-	        while (**strings) {
-	           *concat = **strings;
-	           concat++; 
-	           **strings++;
-	        }
-	       *strings++;
-	    }
-	    *concat = '\0';
+	while (**strings) {
+	    *concat = **strings;
+	    concat++; 
+	    **strings++;
+	}
+	*strings++;
+    }
+    *concat = '\0';
     return concat;
 }
