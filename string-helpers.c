@@ -151,12 +151,13 @@ char* str_concat(char** strings, size_t count) {
         n++;
     }
     char* concat;
-    for (int i = 0; i < count; i++) {
-        while (*strings) {
-           *concat = *strings;
+    while (*strings) {
+        while (**strings) {
+           *concat = **strings;
            concat ++; 
-           strings++;
+           *strings++;
         }
+       **strings++;
     }
     *concat = '\0';
     return concat;
