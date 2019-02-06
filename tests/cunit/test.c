@@ -225,9 +225,7 @@ void testISVALIDID_All(void) {
  */
 void testSTRCONCAT_TwoStr(void) {
   char* array[2] = { "Hel", "lo" };
-  char *concat = (char *) malloc(strlen(str_concat(array, 2)) * sizeof(char));
-  concat = str_concat(array, 2);
-  CU_ASSERT_TRUE(strcmp(concat, "Hello") == 0);
+  CU_ASSERT_TRUE(strcmp(str_concat(array, 2), "Hello") == 0);
 }
 void testSTRCONCAT_SingleChar(void) {
   char* array[5] = { "H", "e", "l", "l", "o" };
