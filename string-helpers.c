@@ -125,15 +125,20 @@ int is_identifier_component(char c) {
 int is_valid_identifier(char* str) {
   /* YOUR CODE HERE */
     int n = 0;
-    printf("%lu", sizeof (str));
-    while (n < sizeof (str) - 4) {
-        printf("%c", str[n]);
+    int terminate = 0;
+    while (n < sizeof (str)) {
         if (!is_identifier_component(str[n])) {
            return 0;
         }
+        if (terminate == 1 && str[n] != '') {
+           return 0;
+        }
+        if (str[n] == '\0') {
+           terminate = 1;
+        }
         n++;
     }
-    if (str[sizeof (str) - 2] != '\0') {
+    if (!terminate) {
         return 0;
     }
     return 1;
