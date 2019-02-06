@@ -155,9 +155,9 @@ char* str_concat(char** strings, size_t count) {
         while (**strings) {
            *concat = **strings;
            concat++; 
-           *strings++;
+           **strings++;
         }
-       **strings++;
+       *strings++;
     }
     *concat = '\0';
     printf("%c", concat);
