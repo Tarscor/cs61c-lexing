@@ -224,7 +224,7 @@ void testISVALIDID_All(void) {
  */
 void testSTRCONCAT_TwoStr(void) {
   char* array[2] = { "Hel", "lo" };
-  printf("%d", strcmp(str_concat(array, 2), "Hello"));
+  printf("%s", str_concat(array, 2));
   CU_ASSERT(strcmp(str_concat(array, 2), "Hello") == 0);
 }
 void testSTRCONCAT_SingleChar(void) {
