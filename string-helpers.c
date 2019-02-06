@@ -154,11 +154,12 @@ char* str_concat(char** strings, size_t count) {
     while (*strings) {
         while (**strings) {
            *concat = **strings;
-           concat ++; 
+           concat++; 
            *strings++;
         }
        **strings++;
     }
     *concat = '\0';
+    printf("%c", concat);
     return concat;
 }
