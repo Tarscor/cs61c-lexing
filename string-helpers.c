@@ -146,9 +146,9 @@ int is_valid_identifier(char* str) {
 char* str_concat(char** strings, size_t count) {
     int len = 1;
     int n = 0;
-    printf("%d", n);
     while (n < count) {
         len += strlen (strings[count]);
+        n++;
     }
     char new[len];
     int index = 0;
