@@ -159,5 +159,7 @@ char* str_concat(char** strings, size_t count) {
         }
     }
     strings[index] = '\0';
-    return concat;
+    char* pointer = concat;
+    char* test = "hi"
+    return test;
 }
