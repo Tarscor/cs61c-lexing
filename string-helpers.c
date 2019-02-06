@@ -150,7 +150,7 @@ char* str_concat(char** strings, size_t count) {
         len += strlen (strings[count]);
         n++;
     }
-    char* concat = NULL;
+    char* concat = new char[len];
     while (*strings) {
         while (**strings) {
            *concat = **strings;
