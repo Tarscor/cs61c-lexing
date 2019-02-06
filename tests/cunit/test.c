@@ -316,13 +316,13 @@ CU_TestInfo isvalidid_tests[] = {{"Test letters", testISVALIDID_Letters},
                            isvalidid_tests},
                            CU_SUITE_INFO_NULL};
 
-CU_TestInfo isvalidid_tests[] = {{"Test one string", testSTRCONCAT_TwoStr},
+CU_TestInfo strconcat_tests[] = {{"Test one string", testSTRCONCAT_TwoStr},
                                  {"Test single char strings", testSTRCONCAT_SingleChar},
-                                 {"Test long strings", testSTRINGCONCAT_Long},
+                                 {"Test long strings", testSTRCONCAT_Long},
                                  CU_TEST_INFO_NULL};
 
   CU_SuiteInfo suite8[] = {{"str_concat testing", init_suite1, clean_suite1,
-                           isvalidid_tests},
+                           strconcat_tests},
                            CU_SUITE_INFO_NULL};
 
   /* initialize the CUnit test registry */
