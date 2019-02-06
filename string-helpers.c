@@ -158,4 +158,6 @@ char* str_concat(char** strings, size_t count) {
         }
     }
     strings[index] = '\0';
+    char* p = new;
+    return p;
 }
