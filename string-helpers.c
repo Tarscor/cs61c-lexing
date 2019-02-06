@@ -126,7 +126,8 @@ int is_valid_identifier(char* str) {
   /* YOUR CODE HERE */
     int n = 0;
     int terminate = 0;
-    while (n < 3) {
+    printf("%lu", strlen (str));
+    while (n < strlen (str)) {
         if (!is_identifier_component(str[n])) {
            return 0;
         }
