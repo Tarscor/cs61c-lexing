@@ -160,6 +160,6 @@ char* str_concat(char** strings, size_t count) {
        *strings++;
     }
     *concat = '\0';
-    *char pointer = &concat;
+    char* pointer = &concat;
     return pointer;
 }
