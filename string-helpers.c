@@ -125,7 +125,6 @@ int is_identifier_component(char c) {
 int is_valid_identifier(char* str) {
   /* YOUR CODE HERE */
     int n = 0;
-    int terminate = 0;
     while (n < strlen (str)) {
         if (!is_identifier_component(str[n])) {
            return 0;
@@ -145,5 +144,18 @@ int is_valid_identifier(char* str) {
    The returned character pointer should be null terminated.
 */
 char* str_concat(char** strings, size_t count) {
-   return NULL;
+    int len = 1;
+    int n = 0
+    while (n < count) {
+        len += strlen (strings[count]);
+    }
+    char new[len];
+    int index = 0;
+    for (int i = 0; i < count; i++) {
+        for (int j = 0; j < strlen (strings[i]); j++) {
+            new[index] = strings[i][j];
+            index++;
+        }
+    }
+    strings[index] = '\0';
 }
