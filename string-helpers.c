@@ -133,7 +133,7 @@ int is_valid_identifier(char* str) {
         n++;
     }
     printf("%c", str[sizeof (str) - 1]);
-    if (str[sizeof (str) - 1] == '\0') {
+    if (str[sizeof (str) - 1] != '\0') {
         return 0;
     }
     return 1;
