@@ -153,11 +153,11 @@ char* str_concat(char** strings, size_t count) {
     char *concat = (char *) malloc(len * sizeof(char));
     while (*strings) {
 	int index = 0;
-	while (n < strlen(*strings)) {
+	while (index < strlen(*strings)) {
 	    *concat = **strings;
-	    concat++; 
+	    concat++;
+	    printf("hello");
 	    **strings++;
-            printf("hi");
 	}
 	*strings++;
     }
