@@ -158,8 +158,8 @@ char* str_concat(char** strings, size_t count) {
 	    **strings++;
 	}
 	*strings++;
+	printf("hi");
     }
-    printf("hi");
     *concat = '\0';
     return concat;
 }
