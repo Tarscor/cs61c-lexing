@@ -321,7 +321,7 @@ CU_TestInfo strconcat_tests[] = {{"Test one string", testSTRCONCAT_TwoStr},
                                  {"Test long strings", testSTRCONCAT_Long},
                                  CU_TEST_INFO_NULL};
 
-  CU_SuiteInfo suite8[] = {{"str_concat testing", init_suite1, clean_suite1,
+  CU_SuiteInfo suite9[] = {{"str_concat testing", init_suite1, clean_suite1,
                            strconcat_tests},
                            CU_SUITE_INFO_NULL};
 
