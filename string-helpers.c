@@ -130,7 +130,7 @@ int is_valid_identifier(char* str) {
         if (!is_identifier_component(str[n])) {
            return 0;
         }
-        if (terminate == 1 && str[n] != '') {
+        if (terminate == 1 && str[n] != '\0') {
            return 0;
         }
         if (str[n] == '\0') {
