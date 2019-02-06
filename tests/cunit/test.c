@@ -1,4 +1,5 @@
 #include <stddef.h>
+#include <stdlib.h>
 #include "../../string-helpers.h"
 #include <CUnit/Basic.h>
 #include <CUnit/TestDB.h>
