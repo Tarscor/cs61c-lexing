@@ -156,10 +156,10 @@ char* str_concat(char** strings, size_t count) {
         for (int j = 0; j < strlen (strings[i]); j++) {
             new[index] = strings[i][j];
             index++;
-            printf("hi");
         }
     }
     strings[index] = '\0';
+    printf("hi");
     char* p = new;
     return p;
 }
