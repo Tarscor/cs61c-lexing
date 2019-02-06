@@ -220,6 +220,20 @@ void testISVALIDID_All(void) {
   CU_ASSERT_TRUE(is_valid_identifier("7Q_"));
 }
 
+/* Simple test of str_concat().
+ */
+void testSTRCONCAT_OneStr(void) {
+  char** p = { "Hello" };
+  CU_ASSERT(strcmp(str_concat(p, "Hello") == 0);
+}
+void testSTRCONCAT_SingleChar(void) {
+  char** p = { "H", "e", "l", "l", "o" };
+  CU_ASSERT(strcmp(str_concat(p, "Hello") == 0);
+}
+void testSTRCONCAT_Long(void) {
+  char** p = { "Hello", " ", "Jedi", " ", "boi" };
+  CU_ASSERT(strcmp(str_concat(p, "Hello Jedi boi") == 0);
+}
 
 /* The main() function for setting up and running the tests.
  * Returns a CUE_SUCCESS on successful running, another
@@ -302,6 +316,15 @@ CU_TestInfo isvalidid_tests[] = {{"Test letters", testISVALIDID_Letters},
                            isvalidid_tests},
                            CU_SUITE_INFO_NULL};
 
+CU_TestInfo isvalidid_tests[] = {{"Test one string", testSTRCONCAT_OneStr},
+                                 {"Test single char strings", testSTRCONCAT_SingleChar},
+                                 {"Test long strings", testSTRINGCONCAT_Long},
+                                 CU_TEST_INFO_NULL};
+
+  CU_SuiteInfo suite8[] = {{"str_concat testing", init_suite1, clean_suite1,
+                           isvalidid_tests},
+                           CU_SUITE_INFO_NULL};
+
   /* initialize the CUnit test registry */
   if (CUE_SUCCESS != CU_initialize_registry())
     return CU_get_error();
@@ -313,7 +336,8 @@ CU_TestInfo isvalidid_tests[] = {{"Test letters", testISVALIDID_Letters},
 || CU_register_suites(suite5)
 || CU_register_suites(suite6) 
 || CU_register_suites(suite7) 
-|| CU_register_suites(suite8)) {
+|| CU_register_suites(suite8)
+|| CU_register_suites(suite9)) {
     CU_cleanup_registry();
     return CU_get_error();
   }
