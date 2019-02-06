@@ -222,17 +222,17 @@ void testISVALIDID_All(void) {
 
 /* Simple test of str_concat().
  */
-void testSTRCONCAT_OneStr(void) {
-  char** p = { "Hello" };
-  CU_ASSERT(strcmp(str_concat(p, "Hello") == 0);
+void testSTRCONCAT_TwoStr(void) {
+  char** p = { "Hel", "lo" };
+  CU_ASSERT(strcmp(str_concat(p, 2), "Hello") == 0);
 }
 void testSTRCONCAT_SingleChar(void) {
   char** p = { "H", "e", "l", "l", "o" };
-  CU_ASSERT(strcmp(str_concat(p, "Hello") == 0);
+  CU_ASSERT(strcmp(str_concat(p, 5), "Hello") == 0);
 }
 void testSTRCONCAT_Long(void) {
-  char** p = { "Hello", " ", "Jedi", " ", "boi" };
-  CU_ASSERT(strcmp(str_concat(p, "Hello Jedi boi") == 0);
+  char** p = { "Hello", " ", "Jedi", " ", "boi", "!" };
+  CU_ASSERT(strcmp(str_concat(p, 6), "Hello Jedi boi!") == 0);
 }
 
 /* The main() function for setting up and running the tests.
@@ -316,7 +316,7 @@ CU_TestInfo isvalidid_tests[] = {{"Test letters", testISVALIDID_Letters},
                            isvalidid_tests},
                            CU_SUITE_INFO_NULL};
 
-CU_TestInfo isvalidid_tests[] = {{"Test one string", testSTRCONCAT_OneStr},
+CU_TestInfo isvalidid_tests[] = {{"Test one string", testSTRCONCAT_TwoStr},
                                  {"Test single char strings", testSTRCONCAT_SingleChar},
                                  {"Test long strings", testSTRINGCONCAT_Long},
                                  CU_TEST_INFO_NULL};
