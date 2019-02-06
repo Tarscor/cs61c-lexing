@@ -152,6 +152,7 @@ char* str_concat(char** strings, size_t count) {
     }
     char new[len];
     int index = 0;
+    printf("hi");
     for (int i = 0; i < count; i++) {
         for (int j = 0; j < strlen (strings[i]); j++) {
             new[index] = strings[i][j];
