@@ -150,17 +150,15 @@ char* str_concat(char** strings, size_t count) {
         len += strlen(strings[count]);
         n++;
     }
-    char *concat = (char *) malloc(len * sizeof(char));
-    while (*strings) {
-	int index = 0;
-	while (index < strlen(*strings)) {
-	    *concat = **strings;
-	    concat++;
-	    printf("hello");
-	    **strings++;
-	}
-	*strings++;
+    char concat[len];
+    int index = 0;
+    for (int i = 0; i < count; i++) {
+        for (int j = 0; j < strlen (strings[i]); j++) {
+            concat[index] = strings[i][j];
+            index++;
+        }
     }
-    *concat = '\0';
-    return concat;
+    concat[index] = '\0';
+    char* p = concat;
+    return p;
 }
