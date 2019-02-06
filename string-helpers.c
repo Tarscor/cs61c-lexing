@@ -150,15 +150,14 @@ char* str_concat(char** strings, size_t count) {
         len += strlen (strings[count]);
         n++;
     }
-    char concat[len];
-    int index = 0;
+    char* concat;
     for (int i = 0; i < count; i++) {
-        for (int j = 0; j < strlen (strings[i]); j++) {
-            concat[index] = strings[i][j];
-            index++;
+        while (*strings) {
+           *concat = *strings;
+           concat ++; 
+           strings++;
         }
     }
-    strings[index] = '\0';
-    char* pointer = concat;
-    return pointer;
+    *concat = '\0';
+    return concat;
 }
