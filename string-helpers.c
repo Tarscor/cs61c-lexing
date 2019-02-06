@@ -132,6 +132,9 @@ int is_valid_identifier(char* str) {
         }
         n++;
     }
+    if (str[n] != '\0') {
+       return 0;
+    }
     return 1;
 }
 
