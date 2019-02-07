@@ -175,11 +175,11 @@ int ProcessFileIncludes(StringDLL** node_ptr,
     }
 
     /* Reset offset. */
-    buffer_offset = 0;
+    buffer_offset = 0;'
+    free(buffer);
   }
   fclose(f);
   *node_ptr = node->prev;
-  free(buffer);
   return 0;
 }
 
