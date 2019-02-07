@@ -8,8 +8,7 @@
 
 /* Helper Functions */
 char* ExtractPath(char* filename);
-int ProcessFileIncludes(StringDLL** node_ptr,
-                        StringDLL** front_ptr,
+int ProcessFileIncludes(StringDLL** node_ptr, StringDLL** front_ptr,
                         char* path);
 size_t AppendInclude(StringDLL** node_ptr,
                      StringDLL** front_ptr,
