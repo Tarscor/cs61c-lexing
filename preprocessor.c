@@ -8,7 +8,8 @@
 
 /* Helper Functions */
 char* ExtractPath(char* filename);
-int ProcessFileIncludes(StringDLL** node_ptr, StringDLL** front_ptr,
+int ProcessFileIncludes(StringDLL** node_ptr,
+                        StringDLL** front_ptr,
                         char* path);
 size_t AppendInclude(StringDLL** node_ptr,
                      StringDLL** front_ptr,
@@ -171,7 +172,6 @@ int ProcessFileIncludes(StringDLL** node_ptr,
       if (buffer == NULL) {
         allocation_failed();
       }
-      free(buffer);
     }
 
     /* Reset offset. */
@@ -179,6 +179,7 @@ int ProcessFileIncludes(StringDLL** node_ptr,
   }
   fclose(f);
   *node_ptr = node->prev;
+  free(buffer);
   return 0;
 }
 
