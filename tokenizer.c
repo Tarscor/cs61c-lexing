@@ -468,6 +468,7 @@ size_t SelectToken(char* buffer,
         char *remain;
         long digits;
         digits = strtol(token_contents, &remain, 10);
+        printf("%ld", digits);
         t->data.integer = digits;
         t->type = TOKEN_INTEGER;
         if (!isprint(buffer[size_read + int_len])) {
