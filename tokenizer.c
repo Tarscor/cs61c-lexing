@@ -461,15 +461,15 @@ size_t SelectToken(char* buffer,
         }
         token_contents[int_len] = '\0';
         size_read += int_len + 1;
-        t = create_token(filename);
-        t->linenum = *linenum;
         char *remain;
         int digits = strtol(token_contents, &remain, 10);
         printf("%d", digits);
+        t = create_token(filename);
+        t->linenum = *linenum;
         t->data.integer = digits;
         t->type = TOKEN_INTEGER;
         if (!isprint(buffer[size_read + int_len])) {
-        search = 0;
+          search = 0;
         }
         int total = generate_generic_error(&t, buffer, size_read, size, *linenum,
                                           filename);
