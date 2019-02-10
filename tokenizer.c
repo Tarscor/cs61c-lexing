@@ -367,10 +367,10 @@ size_t SelectToken(char* buffer,
       return size_read;
     }
   } else if (buffer[size_read] == '\'') {  // characters and some errors
-    if (size_read + 1 <= size) {
+    if (size_read + 1 == size) {
       return size_read;
     }
-    if (buffer[size_read + 1] == '\\') {
+    if (buffer[size_read + 1] == '\\' && buffer[size_read + 2] == '\'') {
       if (size_read + 1 < size &&
                 replace_escape_in_character(buffer + size_read) != -1) {
         size_read += 2;
@@ -378,7 +378,7 @@ size_t SelectToken(char* buffer,
           generate_character_error(&t, buffer, size_read, size, *linenum, filename);
           size_read += 1;
       }
-    } else if ((buffer[size_read + 1] == '\'') || (!isprint(buffer[size_read + 1]))) {
+    } else if ((buffer[size_read + 1] == '\'') || (!isprint(buffer[size_read + 1])) || (buffer [size_read + 2] != '\'')) {
         int total =
             generate_character_error(&t, buffer, size_read, size, *linenum, filename);
         if (total == 0) {
@@ -387,7 +387,10 @@ size_t SelectToken(char* buffer,
           size_read += total;
        }
     } else {
-        size_read += 1;
+      t = create_token(filename);
+      t->linenum = *linenum;
+      t->type = TOKEN_SYM_CHARACTER;
+      size_read += 2;
     }
   } else if (buffer[size_read] == '"') {  // strings and some errors
     size_t str_len = 1;
