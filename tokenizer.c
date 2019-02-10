@@ -457,7 +457,7 @@ size_t SelectToken(char* buffer,
         /* Create an int token. Hint: you may find the function strtol helpful
          */
         for (int j = 0; j < int_len - 1; j++) {
-          token_contents[j] = buffer[size_read + j + 1];
+          token_contents[j] = buffer[size_read + j];
         }
         token_contents[int_len - 1] = '\0';
         size_read += int_len + 1;
