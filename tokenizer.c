@@ -456,10 +456,26 @@ size_t SelectToken(char* buffer,
         search = 0;
         /* Create an int token. Hint: you may find the function strtol helpful
          */
-        /* YOUR CODE HERE */
-        /* FIXME IM NOT CORRECT. */
+        for (int j = 0; j < int_len - 1; j++) {
+          token_contents[j] = buffer[size_read + j + 1];
+        }
+        token_contents[str_len - 1] = '\0';
+        size_read += str_len + 1;
+        t = create_token(filename);
+        t->linenum = *linenum;
+        t->data.integer =
+            (char*)malloc(sizeof(char) * strlen(token_contents) + 1);
+        char *remain;
+        long digits;
+        digits = strtol(token_contents, &remain, 10);
+        size_t i = 0;
+        size_t j = 0;
+        t->data.integer = digits;
+        t->type = TOKEN_INTEGER;
+      } else if (!isprint(buffer[size_read + int_len])) {
+        search = 0;
 
-        int total = generate_string_error(&t, buffer, size_read, size, *linenum,
+        int total = generate_generic_error(&t, buffer, size_read, size, *linenum,
                                           filename);
         if (total == 0) {
           return size_read;
