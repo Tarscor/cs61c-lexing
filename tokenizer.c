@@ -466,8 +466,6 @@ size_t SelectToken(char* buffer,
         printf("%d", digits);
         t = create_token(filename);
         t->linenum = *linenum;
-        t->data.integer = digits;
-        t->type = TOKEN_INTEGER;
         if (!isprint(buffer[size_read + int_len])) {
           search = 0;
         }
