@@ -463,8 +463,6 @@ size_t SelectToken(char* buffer,
         size_read += int_len + 1;
         t = create_token(filename);
         t->linenum = *linenum;
-        t->data.integer =
-            (char*)malloc(sizeof(char) * strlen(token_contents) + 1);
         char *remain;
         t->data.integer = (int) strtol(token_contents, &remain, 10);
         t->type = TOKEN_INTEGER;
