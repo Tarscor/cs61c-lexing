@@ -23,7 +23,7 @@ size_t SelectToken(char* buffer,
   characters until a newline is reached.
 
   Hmmm... This might be helpful!
-*/
+/*
 int IS_COMMENT = 0;
 
 /*
@@ -107,7 +107,21 @@ size_t SelectToken(char* buffer,
   */
   TokenList* node = NULL;
   Token* t = NULL;
-
+  
+  /* Remove the rest of the comment. */
+  if (IS_COMMENT) {
+    while (IS_COMMENT) {
+        if (buffer[size_read] == '\n') {
+          IS_COMMENT = 0;
+          (*linenum)++;
+        }
+        if (size_read + 1 == size) {
+          return size_read;
+        }
+        size_read++;
+      }
+  }
+  
   /* Should now be able to narrow tokens by first character. */
   if (buffer[size_read] == '+') {  // + and ++
     if (size_read + 1 == size) {
@@ -147,8 +161,19 @@ size_t SelectToken(char* buffer,
     if (size_read + 1 == size) {
       return size_read;
     }
-    if (0) {
-      /* YOUR CODE HERE*/
+    if (buffer[size_read + 1] == '/') {
+      size_read += 2;
+      IS_COMMENT = 1;
+      while (IS_COMMENT) {
+        if (buffer[size_read] == '\n') {
+          IS_COMMENT = 0;
+          (*linenum)++;
+        }
+        if (size_read + 1 == size) {
+          return size_read;
+        }
+        size_read++;
+      }
     } else {
       size_read++;
       t = create_token(filename);
@@ -342,19 +367,29 @@ size_t SelectToken(char* buffer,
       return size_read;
     }
   } else if (buffer[size_read] == '\'') {  // characters and some errors
-
-    /* YOUR CODE HERE */
-
-    /* FIXME IM NOT CORRECT. */
-
-    int total =
-        generate_string_error(&t, buffer, size_read, size, *linenum, filename);
-    if (total == 0) {
+    if (size_read + 1 == size) {
       return size_read;
+    if (buffer[size_read + 1] == '\\') {
+      if (size_read + 1 < size &&
+                replace_escape_in_character(buffer + size_read) != -1) {
+        size_read += 2;
+      } else {
+          generate_character_error(&t, buffer, size_read, size, *linenum, filename);
+          size_read += 1;
+      }
+    } else if ((buffer[size_read + 1] != '\'') || (!isprint(buffer[size_read + 1])) {
+        int total =
+            generate_character_error(&t, buffer, size_read, size, *linenum, filename);
+        if (total == 0) {
+         return size_read;
+       } else {
+          size_read += total;
+       }
     } else {
-      size_read += total;
+        str_len += 1;
     }
-
+    if (size_read >= size) {
+      return size_read;
   } else if (buffer[size_read] == '"') {  // strings and some errors
     size_t str_len = 1;
     int search = 1;
