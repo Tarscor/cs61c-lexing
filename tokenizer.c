@@ -23,7 +23,7 @@ size_t SelectToken(char* buffer,
   characters until a newline is reached.
 
   Hmmm... This might be helpful!
-/*
+*/
 int IS_COMMENT = 0;
 
 /*
@@ -367,8 +367,9 @@ size_t SelectToken(char* buffer,
       return size_read;
     }
   } else if (buffer[size_read] == '\'') {  // characters and some errors
-    if (size_read + 1 == size) {
+    if (size_read + 1 <= size) {
       return size_read;
+    }
     if (buffer[size_read + 1] == '\\') {
       if (size_read + 1 < size &&
                 replace_escape_in_character(buffer + size_read) != -1) {
@@ -377,7 +378,7 @@ size_t SelectToken(char* buffer,
           generate_character_error(&t, buffer, size_read, size, *linenum, filename);
           size_read += 1;
       }
-    } else if ((buffer[size_read + 1] != '\'') || (!isprint(buffer[size_read + 1])) {
+    } else if ((buffer[size_read + 1] == '\'') || (!isprint(buffer[size_read + 1]))) {
         int total =
             generate_character_error(&t, buffer, size_read, size, *linenum, filename);
         if (total == 0) {
@@ -386,10 +387,8 @@ size_t SelectToken(char* buffer,
           size_read += total;
        }
     } else {
-        str_len += 1;
+        size_read += 1;
     }
-    if (size_read >= size) {
-      return size_read;
   } else if (buffer[size_read] == '"') {  // strings and some errors
     size_t str_len = 1;
     int search = 1;
