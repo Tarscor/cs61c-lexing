@@ -466,10 +466,8 @@ size_t SelectToken(char* buffer,
         t->data.integer =
             (char*)malloc(sizeof(char) * strlen(token_contents) + 1);
         char *remain;
-        long digits;
-        digits = strtol(token_contents, &remain, 10);
         printf("%ld", digits);
-        t->data.integer = digits;
+        t->data.integer = strtol(token_contents, &remain, 10);;
         t->type = TOKEN_INTEGER;
         if (!isprint(buffer[size_read + int_len])) {
         search = 0;
