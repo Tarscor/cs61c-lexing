@@ -454,6 +454,7 @@ size_t SelectToken(char* buffer,
         int_len++;
       } else {
         search = 0;
+        printf("hi");
         /* Create an int token. Hint: you may find the function strtol helpful
          */
         if (1) {
