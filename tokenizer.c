@@ -509,7 +509,7 @@ size_t SelectToken(char* buffer,
           t->type = type;
           size_read += id_len;
         } 
-        if (type == TOKEN_IDENTIFIER) {
+        if ((type == TOKEN_IDENTIFIER) && (type != TOKEN_ERR)) {
           /* Handle identifiers */
           t->data.identifier =
             (char*)malloc(sizeof(char) * strlen(token_contents) + 1);
