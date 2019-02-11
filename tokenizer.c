@@ -456,12 +456,12 @@ size_t SelectToken(char* buffer,
         search = 0;
         /* Create an int token. Hint: you may find the function strtol helpful
          */
-        if (!is_alpha(buffer[size_read + int_len])) {
+        if (!is_alpha(buffer[size_read + int_len]) || !isprint(buffer[size_read + int_len])) {
           for (int j = 0; j < int_len; j++) {
             token_contents[j] = buffer[size_read + j];
           }
           token_contents[int_len] = '\0';
-          size_read += int_len + 1;
+          size_read += int_len;
           t = create_token(filename);
           t->linenum = *linenum;
           char *remain;
