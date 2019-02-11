@@ -510,18 +510,18 @@ size_t SelectToken(char* buffer,
           size_read += id_len;
         } else if (is_valid_identifier(token_contents)) {
           /* Handle identifiers */
-          t = create_token(filename);
-          t->linenum = *linenum;
-          t->type = TOKEN_IDENTIFIER;
-          printf("%s", token_contents);
-          t->data.identifier =
-            (char*)malloc(sizeof(char) * strlen(token_contents) + 1);
-          size_t i = 0;
-          size_t j = 0;
-          while (i < strlen(token_contents)) {
-            t->data.identifier[j++] = token_contents[i++];
-            t->data.identifier[j] = '\0';
-          }
+            t = create_token(filename);
+            t->linenum = *linenum;
+            t->type = TOKEN_IDENTIFIER;
+            printf("%s", token_contents);
+            t->data.identifier =
+              (char*)malloc(sizeof(char) * strlen(token_contents) + 1);
+            size_t i = 0;
+            size_t j = 0;
+            while (i < strlen(token_contents)) {
+              t->data.identifier[j++] = token_contents[i++];
+              t->data.identifier[j] = '\0';
+            }
         } else {
           /* Errors */
           int total = generate_generic_error(&t, buffer, size_read, size,
