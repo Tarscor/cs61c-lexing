@@ -500,7 +500,6 @@ size_t SelectToken(char* buffer,
           token_contents[j] = buffer[size_read + j];
         }
         token_contents[id_len + 1] = '\0';
-        printf("%s", token_contents);
         enum TokenType type = check_keyword(token_contents);
         if (type != TOKEN_ERR) {
           t = create_token(filename);
@@ -520,6 +519,7 @@ size_t SelectToken(char* buffer,
               t->data.identifier[j++] = token_contents[i++];
               t->data.identifier[j] = '\0';
             }
+            size_read += id_len;
         } else {
           /* Errors */
           int total = generate_generic_error(&t, buffer, size_read, size,
