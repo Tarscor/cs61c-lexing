@@ -469,14 +469,14 @@ size_t SelectToken(char* buffer,
             printf("%d", digits);
             t->data.integer = digits;
             t->type = TOKEN_INTEGER;
+        } else {
             if (!isprint(buffer[size_read + int_len])) {
             search = 0;
-            }
             int total = generate_generic_error(&t, buffer, size_read, size, *linenum,
             if (total == 0) {
               return size_read;
-        } else {
-          size_read += total;
+            } else {
+              size_read += total;
         }
       }
     }
