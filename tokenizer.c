@@ -370,7 +370,7 @@ size_t SelectToken(char* buffer,
     if (size_read + 1 == size) {
       return size_read;
     }
-    if (buffer[size_read + 1] == '\\' && buffer[size_read + 2] == '\\' && buffer[size_read + 4] == '\\') {
+    if (buffer[size_read + 1] == '\' && buffer[size_read + 2] == '\' && buffer[size_read + 4] == '\') {
       if (replace_escape_in_character(buffer + size_read + 1) != -1) {
         t = create_token(filename);
         t->linenum = *linenum;
