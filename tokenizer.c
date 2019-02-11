@@ -503,7 +503,7 @@ size_t SelectToken(char* buffer,
         }
         token_contents[id_len + 1] = '\0';
         enum TokenType type = check_keyword(token_contents);
-        if (type != TOKEN_ERR && !is_valid_identifier(token_contents)) {
+        if (type != TOKEN_ERR) {
           t = create_token(filename);
           t->linenum = *linenum;
           t->type = type;
