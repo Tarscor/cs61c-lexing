@@ -385,10 +385,10 @@ size_t SelectToken(char* buffer,
       size_read += 3; 
     } else {
       if (buffer[size_read + 1] == '\n') {
-        *t = create_token(filename);
-        (*t)->linenum = linenum;
-        (*t)->data.error = '\''
-        (*t)->type = TOKEN_ERR;
+        t = create_token(filename);
+        t->linenum = linenum;
+        t->data.error = '\''
+        t->type = TOKEN_ERR;
         size_read++;
       } else {
         int total = generate_character_error(&t, buffer, size_read, size, *linenum, filename);
