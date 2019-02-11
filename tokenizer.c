@@ -445,8 +445,7 @@ size_t SelectToken(char* buffer,
     if (search) {
       return size_read;
     }
-  } else if (is_digit(
-                 buffer[size_read])) {  // positive integers and some errors
+  } else if (is_digit(buffer[size_read])) {  // positive integers and some errors
     printf("hi");
     size_t int_len = 1;
     int search = 1;
@@ -478,10 +477,9 @@ size_t SelectToken(char* buffer,
           size_read += total
         }
       }
-    }
-    if (search) {
-      return size_read;
-    }
+      if (search) {
+        return size_read;
+      }
     } 
   } else {  // Identifiers, keywords, and errors
     size_t id_len = 1;
