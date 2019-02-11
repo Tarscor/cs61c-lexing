@@ -370,24 +370,27 @@ size_t SelectToken(char* buffer,
     if (size_read + 1 == size) {
       return size_read;
     }
-    if (buffer[size_read + 1] == '\\' && buffer[size_read + 3] == '\'') {
-      if (size_read + 1 < size &&
-                replace_escape_in_character(buffer + size_read) != -1) {
-        size_read += 2;
+    if (buffer[size_read + 1] == '\\' && buffer[size_read + 2] == '\\' && buffer[size_read + 4] == '\\') {
+      if (replace_escape_in_character(buffer + size_read + 1) != -1) {
+        t = create_token(filename);
+        t->linenum = *linenum;
+        t->type = TOKEN_CHARACTER;
+        t->data.character = replace_escape_in_character(buffer + size_read);
+        size_read += 5;
       } else {
           generate_character_error(&t, buffer, size_read, size, *linenum, filename);
-          size_read += 1;
+          size_read += 5;
       }
     } else if ((buffer[size_read + 1] != '\'') && (isprint(buffer[size_read + 1])) && (buffer[size_read + 2] == '\'')) {
       t = create_token(filename);
       t->linenum = *linenum;
       t->type = TOKEN_CHARACTER;
       t->data.character = buffer[size_read + 1];
-      size_read += 3;  
+      size_read += 3; 
     } else {
       int total = generate_character_error(&t, buffer, size_read, size, *linenum, filename);
         if (total == 0) {
-         return size_read;
+          return size_read;
        } else {
           size_read += total;
        }
