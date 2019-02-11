@@ -88,7 +88,7 @@ int is_alpha(char c) {
    (white)space character, the function returns 0.
 */
 int is_space(char c) {
-    if (c == ' ' || c == '\n') {
+    if ((c == ' ') || (c == '\n')) {
         return 1;
     }
   return 0;
