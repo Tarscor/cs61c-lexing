@@ -470,20 +470,20 @@ size_t SelectToken(char* buffer,
           t->data.integer = digits;
           t->type = TOKEN_INTEGER;
         } else {
-          if (!isprint(buffer[size_read + int_len])) {
           search = 0;
           int total = generate_generic_error(&t, buffer, size_read, size, *linenum,
                                         filename);
-            if (total == 0) {
-              return size_read;
-            } else {
-              size_read += total;
-            }
+          if (total == 0) {
+            return size_read;
+          } else {
+            size_read += total;
           }
         }
-        if (search) {
-          return size_read;
-        }
+      }
+      if (search) {
+         return size_read;
+      }
+    }
   } else {  // Identifiers, keywords, and errors
     size_t id_len = 1;
     int search = 1;
