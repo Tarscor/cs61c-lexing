@@ -508,8 +508,7 @@ size_t SelectToken(char* buffer,
           t->linenum = *linenum;
           t->type = type;
           size_read += id_len;
-        } 
-        if ((type == TOKEN_IDENTIFIER) && (type != TOKEN_ERR)) {
+        } elif (is_valid_identifier(token_contents)) {
           /* Handle identifiers */
           t->data.identifier =
             (char*)malloc(sizeof(char) * strlen(token_contents) + 1);
