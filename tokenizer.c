@@ -510,6 +510,9 @@ size_t SelectToken(char* buffer,
           size_read += id_len;
         } elif (is_valid_identifier(token_contents)) {
           /* Handle identifiers */
+          t = create_token(filename);
+          t->linenum = *linenum;
+          t->type = TOKEN_IDENTIFIER;
           t->data.identifier =
             (char*)malloc(sizeof(char) * strlen(token_contents) + 1);
           size_t i = 0;
