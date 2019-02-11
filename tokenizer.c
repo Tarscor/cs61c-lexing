@@ -456,7 +456,6 @@ size_t SelectToken(char* buffer,
         search = 0;
         /* Create an int token. Hint: you may find the function strtol helpful
          */
-        if (1) {
           for (int j = 0; j < int_len; j++) {
             token_contents[j] = buffer[size_read + j];
           }
@@ -468,7 +467,7 @@ size_t SelectToken(char* buffer,
           printf("%ld", strtol(token_contents, &remain, 10)); 
           t->data.integer = strtol(token_contents, &remain, 10);
           t->type = TOKEN_INTEGER;
-        } else {
+        if (0) {
           search = 0;
           int total = generate_generic_error(&t, buffer, size_read, size, *linenum,
                                           filename);
