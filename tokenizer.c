@@ -375,10 +375,7 @@ size_t SelectToken(char* buffer,
         t = create_token(filename);
         t->linenum = *linenum;
         t->type = TOKEN_CHARACTER;
-        t->data.character =
-            (char*)malloc(sizeof(char) * 2);
-        t->data.character[0] = buffer[size_read + 1];
-        t->data.character[1] = buffer[size_read + 2];
+        t->data.character = replace_escape_in_character(buffer + size_read + 1);
         size_read += 4;
     } else if ((buffer[size_read + 1] != '\'') && (isprint(buffer[size_read + 1])) && (buffer[size_read + 2] == '\'')) {
       t = create_token(filename);
