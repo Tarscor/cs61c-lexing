@@ -370,7 +370,7 @@ size_t SelectToken(char* buffer,
     if (size_read + 1 == size) {
       return size_read;
     }
-    if (buffer[size_read + 1] == '\' && buffer[size_read + 2] == '\' && buffer[size_read + 4] == '\') {
+    if (buffer[size_read + 1] == '\\' && buffer[size_read + 2] == '\\' && buffer[size_read + 4] == '\\') {
       if (replace_escape_in_character(buffer + size_read + 1) != -1) {
         t = create_token(filename);
         t->linenum = *linenum;
@@ -378,6 +378,7 @@ size_t SelectToken(char* buffer,
         t->data.character = replace_escape_in_character(buffer + size_read);
         size_read += 5;
       } else {
+          printf("hi2");
           generate_character_error(&t, buffer, size_read, size, *linenum, filename);
           size_read += 5;
       }
@@ -388,6 +389,7 @@ size_t SelectToken(char* buffer,
       t->data.character = buffer[size_read + 1];
       size_read += 3; 
     } else {
+      printf("hi2");
       int total = generate_character_error(&t, buffer, size_read, size, *linenum, filename);
         if (total == 0) {
           return size_read;
