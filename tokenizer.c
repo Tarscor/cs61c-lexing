@@ -520,6 +520,7 @@ size_t SelectToken(char* buffer,
           size_t j = 0;
           while (i < strlen(token_contents)) {
             t->data.identifier[j++] = token_contents[i++];
+            t->data.identifier[j] = '\0';
           }
         } else {
           /* Errors */
