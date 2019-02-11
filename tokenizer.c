@@ -390,12 +390,14 @@ size_t SelectToken(char* buffer,
         (*t)->data.error = '\''
         (*t)->type = TOKEN_ERR;
         size_read++;
-      int total = generate_character_error(&t, buffer, size_read, size, *linenum, filename);
+      } else {
+        int total = generate_character_error(&t, buffer, size_read, size, *linenum, filename);
         if (total == 0) {
           return size_read;
-       } else {
-          size_read += total;
-       }
+        } else {
+           size_read += total;
+        }
+      }
     }
   } else if (buffer[size_read] == '"') {  // strings and some errors
     size_t str_len = 1;
