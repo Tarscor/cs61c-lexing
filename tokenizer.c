@@ -456,11 +456,11 @@ size_t SelectToken(char* buffer,
         search = 0;
         /* Create an int token. Hint: you may find the function strtol helpful
          */
+        printf("hi");
         for (int j = 0; j < int_len; j++) {
           token_contents[j] = buffer[size_read + j];
         }
-        printf("hi");
-        token_contents[int_len] = '\0'; 
+        token_contents[int_len] = '\0';
         size_read += int_len + 1;
         char *remain;
         t = create_token(filename);
@@ -479,10 +479,10 @@ size_t SelectToken(char* buffer,
         }
       }
     }
-  if (search) {
-    return size_read;
- }
-} 
+    if (search) {
+      return size_read;
+    }
+    } 
   } else {  // Identifiers, keywords, and errors
     size_t id_len = 1;
     int search = 1;
