@@ -378,7 +378,7 @@ size_t SelectToken(char* buffer,
         t->data.character = replace_escape_in_character(buffer + size_read);
         size_read += 5;
       } else {
-          printf("hi2");
+          printf("hi1");
           generate_character_error(&t, buffer, size_read, size, *linenum, filename);
           size_read += 5;
       }
@@ -510,7 +510,6 @@ size_t SelectToken(char* buffer,
           /* YOUR CODE HERE */
         } else {
           /* Errors */
-          printf("hi");
           int total = generate_generic_error(&t, buffer, size_read, size,
                                              *linenum, filename);
           if (total == 0) {
