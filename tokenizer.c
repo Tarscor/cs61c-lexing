@@ -435,6 +435,7 @@ size_t SelectToken(char* buffer,
         }
         t->type = TOKEN_STRING;
       } else if (buffer[size_read + 1] == '\n') {
+        search = 0;
         t = create_token(filename);
         t->linenum = *linenum;
         t->data.error = (char*)malloc(sizeof(char));
