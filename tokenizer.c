@@ -452,6 +452,7 @@ size_t SelectToken(char* buffer,
     while (size_read + int_len < size && search) {
       if (is_digit(buffer[size_read + int_len])) {
         int_len++;
+        printf("hi");
       } else {
         search = 0;
         printf("hi");
