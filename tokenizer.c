@@ -377,10 +377,9 @@ size_t SelectToken(char* buffer,
         t = create_token(filename);
         t->linenum = *linenum;
         t->type = TOKEN_CHARACTER;
-        t->data.character = replace_escape_in_character(buffer + size_read);
+        t->data.character = '\n';
         size_read += 5;
       } else {
-          printf("hi1");
           generate_character_error(&t, buffer, size_read, size, *linenum, filename);
           size_read += 5;
       }
