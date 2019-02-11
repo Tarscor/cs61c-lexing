@@ -370,15 +370,14 @@ size_t SelectToken(char* buffer,
     if (size_read + 1 == size) {
       return size_read;
     }
-    if ((buffer[size_read + 1] == '\\') && (buffer[size_read + 2] == '\\')
-                                        && (replace_escape_in_character(buffer + size_read + 1) != -1)
-                                        && (buffer[size_read + 4] == '\'')) {
+    if ((buffer[size_read + 1] == '\\') && (replace_escape_in_character(buffer + size_read + 1) != -1)
+                                        && (buffer[size_read + 3] == '\'')) {
         t = create_token(filename);
         t->linenum = *linenum;
         t->type = TOKEN_CHARACTER;
         printf("%c", replace_escape_in_character(buffer + size_read + 1));
         t->data.character = replace_escape_in_character(buffer + size_read + 1);
-        size_read += 5;
+        size_read += 4;
     } else if ((buffer[size_read + 1] != '\'') && (isprint(buffer[size_read + 1])) && (buffer[size_read + 2] == '\'')) {
       t = create_token(filename);
       t->linenum = *linenum;
