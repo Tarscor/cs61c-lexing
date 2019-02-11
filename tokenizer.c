@@ -452,11 +452,11 @@ size_t SelectToken(char* buffer,
     while (size_read + int_len < size && search) {
       if (is_digit(buffer[size_read + int_len])) {
         int_len++;
+        printf("hi");
       } else {
         search = 0;
         /* Create an int token. Hint: you may find the function strtol helpful
          */
-        printf("hi");
         for (int j = 0; j < int_len; j++) {
           token_contents[j] = buffer[size_read + j];
         }
