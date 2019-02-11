@@ -513,6 +513,7 @@ size_t SelectToken(char* buffer,
           t = create_token(filename);
           t->linenum = *linenum;
           t->type = TOKEN_IDENTIFIER;
+          printf("%s", token_contents);
           t->data.identifier =
             (char*)malloc(sizeof(char) * strlen(token_contents) + 1);
           size_t i = 0;
