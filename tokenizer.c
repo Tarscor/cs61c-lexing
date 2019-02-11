@@ -520,7 +520,6 @@ size_t SelectToken(char* buffer,
               t->data.identifier[j++] = token_contents[i++];
               t->data.identifier[j] = '\0';
             }
-            printf("%s", t->data.identifier);
             size_read += id_len;
         } else {
           /* Errors */
