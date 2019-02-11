@@ -452,25 +452,20 @@ size_t SelectToken(char* buffer,
     while (size_read + int_len < size && search) {
       if (is_digit(buffer[size_read + int_len])) {
         int_len++;
-        printf("hi1");
       } else {
-        printf("hi2");
         search = 0;
         /* Create an int token. Hint: you may find the function strtol helpful
          */
-        if (1) {
+        if (!is_alpha(buffer[size_read + int_len])) {
           for (int j = 0; j < int_len; j++) {
             token_contents[j] = buffer[size_read + j];
-            printf("hi3");
           }
           token_contents[int_len] = '\0';
           size_read += int_len + 1;
           t = create_token(filename);
           t->linenum = *linenum;
           char *remain;
-          int digits = strtol(token_contents, &remain, 10);
-          printf("%d", digits);
-          t->data.integer = digits;
+          t->data.integer = strtol(token_contents, &remain, 10);
           t->type = TOKEN_INTEGER;
         } else {
           search = 0;
