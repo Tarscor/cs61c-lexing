@@ -473,6 +473,7 @@ size_t SelectToken(char* buffer,
             if (!isprint(buffer[size_read + int_len])) {
             search = 0;
             int total = generate_generic_error(&t, buffer, size_read, size, *linenum,
+                                          filename);
             if (total == 0) {
               return size_read;
             } else {
