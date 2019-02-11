@@ -469,6 +469,7 @@ size_t SelectToken(char* buffer,
           t->type = TOKEN_INTEGER;
         } else {
           search = 0;
+          printf("hi"0;
           int total = generate_generic_error(&t, buffer, size_read, size, *linenum,
                                         filename);
           if (total == 0) {
