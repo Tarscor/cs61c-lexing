@@ -434,6 +434,13 @@ size_t SelectToken(char* buffer,
           t->data.string[j] = '\0';
         }
         t->type = TOKEN_STRING;
+      } else if (buffer[size_read + 1] == '\n') {
+        t = create_token(filename);
+        t->linenum = *linenum;
+        t->data.error = (char*)malloc(sizeof(char));
+        t->data.error[0] = buffer[size_read];
+        t->type = TOKEN_ERR;
+        size_read++;
       } else if (!isprint(buffer[size_read + str_len])) {
         search = 0;
         int total = generate_string_error(&t, buffer, size_read, size, *linenum,
@@ -443,13 +450,6 @@ size_t SelectToken(char* buffer,
         } else {
           size_read += total;
         }
-      } else if (buffer[size_read + 1] == '\n') {
-        t = create_token(filename);
-        t->linenum = *linenum;
-        t->data.error = (char*)malloc(sizeof(char));
-        t->data.error[0] = buffer[size_read];
-        t->type = TOKEN_ERR;
-        size_read++;
       } else {
         str_len += 1;
       }
