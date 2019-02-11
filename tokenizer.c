@@ -460,35 +460,21 @@ size_t SelectToken(char* buffer,
           for (int j = 0; j < int_len; j++) {
             token_contents[j] = buffer[size_read + j];
           }
-          token_contents[int_len] = '\0';
-          size_read += int_len + 1;
-          char *remain;
-          t = create_token(filename);
-          t->linenum = *linenum;
-          printf("%ld", strtol(token_contents, &remain, 10));
-          t->data.integer = strtol(token_contents, &remain, 10);
-          t->type = TOKEN_INTEGER;
-        } else {
-          search = 0;
-          int total = generate_generic_error(&t, buffer, size_read, size, *linenum,
-        for (int j = 0; j < int_len; j++) {
-          token_contents[j] = buffer[size_read + j];
-        }
-        token_contents[int_len] = '\0';
-        size_read += int_len + 1;
-        t = create_token(filename);
-        t->linenum = *linenum;
-        char *remain;
-        int digits = strtol(token_contents, &remain, 10);
-        printf("%d", digits);
-        t->data.integer = digits;
-        t->type = TOKEN_INTEGER;
-        if (!isprint(buffer[size_read + int_len])) {
-        search = 0;
-        }
-        int total = generate_generic_error(&t, buffer, size_read, size, *linenum,
-        if (total == 0) {
-          return size_read;
+            token_contents[int_len] = '\0';
+            size_read += int_len + 1;
+            t = create_token(filename);
+            t->linenum = *linenum;
+            char *remain;
+            int digits = strtol(token_contents, &remain, 10);
+            printf("%d", digits);
+            t->data.integer = digits;
+            t->type = TOKEN_INTEGER;
+            if (!isprint(buffer[size_read + int_len])) {
+            search = 0;
+            }
+            int total = generate_generic_error(&t, buffer, size_read, size, *linenum,
+            if (total == 0) {
+              return size_read;
         } else {
           size_read += total;
         }
