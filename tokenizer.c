@@ -460,30 +460,30 @@ size_t SelectToken(char* buffer,
           for (int j = 0; j < int_len; j++) {
             token_contents[j] = buffer[size_read + j];
           }
-            token_contents[int_len] = '\0';
-            size_read += int_len + 1;
-            t = create_token(filename);
-            t->linenum = *linenum;
-            char *remain;
-            int digits = strtol(token_contents, &remain, 10);
-            printf("%d", digits);
-            t->data.integer = digits;
-            t->type = TOKEN_INTEGER;
+          token_contents[int_len] = '\0';
+          size_read += int_len + 1;
+          t = create_token(filename);
+          t->linenum = *linenum;
+          char *remain;
+          int digits = strtol(token_contents, &remain, 10);
+          printf("%d", digits);
+          t->data.integer = digits;
+          t->type = TOKEN_INTEGER;
         } else {
-            if (!isprint(buffer[size_read + int_len])) {
-            search = 0;
-            int total = generate_generic_error(&t, buffer, size_read, size, *linenum,
-                                          filename);
+          if (!isprint(buffer[size_read + int_len])) {
+          search = 0;
+          int total = generate_generic_error(&t, buffer, size_read, size, *linenum,
+                                        filename);
             if (total == 0) {
               return size_read;
             } else {
               size_read += total;
+            }
+          }
         }
-      }
-    }
-    if (search) {
-      return size_read;
-    }
+        if (search) {
+          return size_read;
+        }
   } else {  // Identifiers, keywords, and errors
     size_t id_len = 1;
     int search = 1;
