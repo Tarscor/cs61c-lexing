@@ -465,6 +465,7 @@ size_t SelectToken(char* buffer,
           char *remain;
           t = create_token(filename);
           t->linenum = *linenum;
+          printf("%ld", strtol(token_contents, &remain, 10)); 
           t->data.integer = strtol(token_contents, &remain, 10);
           t->type = TOKEN_INTEGER;
         } else {
