@@ -376,7 +376,7 @@ size_t SelectToken(char* buffer,
         t->linenum = *linenum;
         t->type = TOKEN_CHARACTER;
         printf("%c", buffer[size_read + 1]);
-        printf("%c", buffer[size_read + 1]);
+        printf("%c", buffer[size_read + 2]);
         printf("%c", replace_escape_in_character(buffer + size_read + 1));
         t->data.character = replace_escape_in_character(buffer + size_read + 1);
         size_read += 4;
