@@ -459,6 +459,7 @@ size_t SelectToken(char* buffer,
           for (int j = 0; j < int_len; j++) {
             token_contents[j] = buffer[size_read + j];
           }
+          printf("hi");
           token_contents[int_len] = '\0';
           size_read += int_len + 1;
           char *remain;
