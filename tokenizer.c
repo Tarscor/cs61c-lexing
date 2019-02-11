@@ -387,7 +387,8 @@ size_t SelectToken(char* buffer,
       if (buffer[size_read + 1] == '\n') {
         t = create_token(filename);
         t->linenum = *linenum;
-        t->data.error = 2;
+        t->data.error = (char*)malloc(sizeof(char));
+        t->data.error[0] = buffer[size_read];
         t->type = TOKEN_ERR;
         size_read++;
       } else {
