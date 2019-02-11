@@ -373,16 +373,12 @@ size_t SelectToken(char* buffer,
     if ((buffer[size_read + 1] == '\\') && (buffer[size_read + 2] == '\\')
                                         && (replace_escape_in_character(buffer + size_read + 1) != -1)
                                         && (buffer[size_read + 4] == '\'')) {
-      if (replace_escape_in_character(buffer + size_read + 1) != -1) {
         t = create_token(filename);
         t->linenum = *linenum;
         t->type = TOKEN_CHARACTER;
-        t->data.character = {'\\','a'};
+        printf("%c", replace_escape_in_character(buffer + size_read + 1));
+        t->data.character = replace_escape_in_character(buffer + size_read + 1);
         size_read += 5;
-      } else {
-          generate_character_error(&t, buffer, size_read, size, *linenum, filename);
-          size_read += 5;
-      }
     } else if ((buffer[size_read + 1] != '\'') && (isprint(buffer[size_read + 1])) && (buffer[size_read + 2] == '\'')) {
       t = create_token(filename);
       t->linenum = *linenum;
