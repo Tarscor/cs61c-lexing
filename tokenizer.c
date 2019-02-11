@@ -481,6 +481,7 @@ size_t SelectToken(char* buffer,
     if (search) {
       return size_read;
     }
+  } 
   } else {  // Identifiers, keywords, and errors
     size_t id_len = 1;
     int search = 1;
