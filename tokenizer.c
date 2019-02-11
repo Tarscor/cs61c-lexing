@@ -378,7 +378,7 @@ size_t SelectToken(char* buffer,
           generate_character_error(&t, buffer, size_read, size, *linenum, filename);
           size_read += 1;
       }
-    } else if ((buffer[size_read + 1] != '\'') && (isprint(buffer[size_read + 1])) 11 (buffer[size_read + 2] == '\'')) {
+    } else if ((buffer[size_read + 1] != '\'') && (isprint(buffer[size_read + 1])) && (buffer[size_read + 2] == '\'')) {
       t = create_token(filename);
       t->linenum = *linenum;
       t->type = TOKEN_CHARACTER;
