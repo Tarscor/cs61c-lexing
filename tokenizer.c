@@ -508,7 +508,7 @@ size_t SelectToken(char* buffer,
           t->linenum = *linenum;
           t->type = type;
           size_read += id_len;
-        } elif (is_valid_identifier(token_contents)) {
+        } else if (is_valid_identifier(token_contents)) {
           /* Handle identifiers */
           t = create_token(filename);
           t->linenum = *linenum;
