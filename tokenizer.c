@@ -92,6 +92,7 @@ size_t SelectToken(char* buffer,
   while (size_read < size && (is_space(buffer[size_read]))) {
     if (buffer[size_read] == '\n') {
       (*linenum)++;
+      size_read++;
     }
     size_read++;
   }
