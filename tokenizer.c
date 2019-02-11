@@ -459,6 +459,7 @@ size_t SelectToken(char* buffer,
         if (1) {
           for (int j = 0; j < int_len; j++) {
             token_contents[j] = buffer[size_read + j];
+            printf("hi");
           }
           token_contents[int_len] = '\0';
           size_read += int_len + 1;
@@ -471,7 +472,6 @@ size_t SelectToken(char* buffer,
           t->type = TOKEN_INTEGER;
         } else {
           search = 0;
-          printf("hi");
           int total = generate_generic_error(&t, buffer, size_read, size, *linenum,
                                         filename);
           if (total == 0) {
