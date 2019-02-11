@@ -508,9 +508,16 @@ size_t SelectToken(char* buffer,
           t->linenum = *linenum;
           t->type = type;
           size_read += id_len;
-        } else if (0) {  // FIX ME
+        } 
+        if (type == TOKEN_IDENTIFIER) {
           /* Handle identifiers */
-          /* YOUR CODE HERE */
+          t->data.identifier =
+            (char*)malloc(sizeof(char) * strlen(token_contents) + 1);
+          size_t i = 0;
+          size_t j = 0;
+          while (i < strlen(token_contents)) {
+            t->data.identifier[j++] = token_contents[i++];
+          }
         } else {
           /* Errors */
           int total = generate_generic_error(&t, buffer, size_read, size,
