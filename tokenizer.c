@@ -378,7 +378,7 @@ size_t SelectToken(char* buffer,
           generate_character_error(&t, buffer, size_read, size, *linenum, filename);
           size_read += 1;
       }
-    } else if ((buffer[size_read + 1] == '\'') || (!isprint(buffer[size_read + 1])) || (buffer [size_read + 2] != '\'')) {
+    } else if ((buffer[size_read + 1] == '\'') || (!isprint(buffer[size_read + 1])) || (buffer[size_read + 2] != '\'')) {
         int total =
             generate_character_error(&t, buffer, size_read, size, *linenum, filename);
         if (total == 0) {
@@ -469,7 +469,6 @@ size_t SelectToken(char* buffer,
           t->type = TOKEN_INTEGER;
         } else {
           search = 0;
-          printf("hi");
           int total = generate_generic_error(&t, buffer, size_read, size, *linenum,
                                         filename);
           if (total == 0) {
@@ -507,6 +506,7 @@ size_t SelectToken(char* buffer,
           /* YOUR CODE HERE */
         } else {
           /* Errors */
+          printf("hi");
           int total = generate_generic_error(&t, buffer, size_read, size,
                                              *linenum, filename);
           if (total == 0) {
