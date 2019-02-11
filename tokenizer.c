@@ -370,7 +370,7 @@ size_t SelectToken(char* buffer,
     if (size_read + 1 == size) {
       return size_read;
     }
-    if (buffer[size_read + 1] == '\\' && buffer[size_read + 2] == '\'') {
+    if (buffer[size_read + 1] == '\\' && buffer[size_read + 3] == '\'') {
       if (size_read + 1 < size &&
                 replace_escape_in_character(buffer + size_read) != -1) {
         size_read += 2;
