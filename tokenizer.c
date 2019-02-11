@@ -377,7 +377,7 @@ size_t SelectToken(char* buffer,
         t = create_token(filename);
         t->linenum = *linenum;
         t->type = TOKEN_CHARACTER;
-        t->data.character = '\n';
+        t->data.character = '\\n';
         size_read += 5;
       } else {
           generate_character_error(&t, buffer, size_read, size, *linenum, filename);
