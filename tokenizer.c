@@ -526,6 +526,7 @@ size_t SelectToken(char* buffer,
     if (search) {
       return size_read;
     }
+  printf("%d", t->linenum);
   }
 
   /* Append the Token to the end of the list. */
