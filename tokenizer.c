@@ -339,6 +339,9 @@ size_t SelectToken(char* buffer,
             } else {
               size_read += total;
             }
+            if (buffer[size_read - 1] == '\n') {
+              (*linenum)++;
+            }
           } else {
             str_len += 1;
           }
@@ -546,7 +549,6 @@ size_t SelectToken(char* buffer,
     (*tokens)->next = node;
   }
   *tokens = node;
-  printf("%d", t->linenum);
   return size_read;
 }
 
