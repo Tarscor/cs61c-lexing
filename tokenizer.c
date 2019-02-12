@@ -90,15 +90,15 @@ size_t SelectToken(char* buffer,
 
   /* Remove the rest of the comment. */
   while (IS_COMMENT) {
-      if (buffer[size_read] == '\n') {
-        IS_COMMENT = 0;
-        (*linenum)++;
-      }
-      if (size_read + 1 == size) {
-        return size_read;
-      }
-      size_read++;
+    if (buffer[size_read] == '\n') {
+      IS_COMMENT = 0;
+      (*linenum)++;
     }
+    if (size_read + 1 == size) {
+      return size_read;
+    }
+    size_read++;
+  }
   
   /* First remove any leading whitespace. */
   while (size_read < size && (is_space(buffer[size_read]))) {
