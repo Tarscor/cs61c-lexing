@@ -388,6 +388,9 @@ size_t SelectToken(char* buffer,
       } else {
          size_read += total;
       }
+      if (buffer[size_read - 1] == '\n') {
+        (*linenum)++;
+      }
     }
   } else if (buffer[size_read] == '"') {  // strings and some errors
     size_t str_len = 1;
@@ -434,6 +437,9 @@ size_t SelectToken(char* buffer,
         } else {
           size_read += total;
         }
+        if (buffer[size_read - 1] == '\n') {
+          (*linenum)++;
+        }
       } else {
         str_len += 1;
       }
@@ -471,6 +477,9 @@ size_t SelectToken(char* buffer,
             return size_read;
           } else {
             size_read += total;
+          }
+          if (buffer[size_read - 1] == '\n') {
+            (*linenum)++;
           }
         }
       }
@@ -519,6 +528,9 @@ size_t SelectToken(char* buffer,
             return size_read;
           } else {
             size_read += total;
+          }
+          if (buffer[size_read - 1] == '\n') {
+            (*linenum)++;
           }
         }
       }
