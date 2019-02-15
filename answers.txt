@@ -1,9 +1,0 @@
-ls -ld
-mv
-chmod
-pwd
-ping -c
-man -k
-ps
-kill
-sdiff
