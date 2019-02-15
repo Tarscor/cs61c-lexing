@@ -5,6 +5,13 @@
 // C99 standard boolean type
 #include <stdbool.h>
 
+<<<<<<< HEAD
+=======
+#include "ast-print.h"
+#include "ast.h"
+#include "parser-errors.h"
+#include "parser.h"
+>>>>>>> d131e96a07341c217af534377ca6862ad38ce1f5
 #include "preprocessor.h"
 #include "tokenizer.h"
 #include "tokens.h"
@@ -17,6 +24,10 @@ void usage(char* binary) {
   printf("Usage: %s {flag} filename1 ... \n", binary);
   printf("Filename is the dinky1c program to interpret.  Flags supported\n");
   printf(" -t: TOKENIZE.  Just do the lexical analysis on the file\n");
+<<<<<<< HEAD
+=======
+  printf(" -p: PARSE.  Both tokenize and parse the program\n");
+>>>>>>> d131e96a07341c217af534377ca6862ad38ce1f5
 }
 
 /*
@@ -26,9 +37,18 @@ void usage(char* binary) {
  */
 int main(int argc, char** argv) {
   bool tokenize = false;
+<<<<<<< HEAD
   TokenList** tokens;
   char** files = NULL;
   int* boundaries = NULL;
+=======
+  bool parse = false;
+  TokenList** tokens;
+  int lexer_errors[argc - 2];
+  char** files = NULL;
+  int* boundaries = NULL;
+  AST** asts;
+>>>>>>> d131e96a07341c217af534377ca6862ad38ce1f5
   int i;
   int exitcode = 0;
   char* modeflag = argv[1];
@@ -40,6 +60,11 @@ int main(int argc, char** argv) {
 
   if (!strcmp(modeflag, "-t")) {
     tokenize = true;
+<<<<<<< HEAD
+=======
+  } else if (!strcmp(modeflag, "-p")) {
+    parse = true;
+>>>>>>> d131e96a07341c217af534377ca6862ad38ce1f5
   } else {
     usage(argv[0]);
     exit(-1);
@@ -63,7 +88,33 @@ int main(int argc, char** argv) {
       PrintTokens(tokens[i]);
     }
   }
+<<<<<<< HEAD
   
+=======
+  if (parse) {
+    for (int i = 0; i < argc - 2; i++) {
+      tokens[i] = tokens[boundaries[i]];
+      for (int j = boundaries[i] + 1; j < boundaries[i + 1]; j++) {
+        AppendTokenList(tokens[i], tokens[j]);
+      }
+    }
+    asts = (AST**)malloc(sizeof(AST*) * (argc - 2));
+    if (asts == NULL) {
+      allocation_failed();
+    }
+    for (i = 0; i < (argc - 2); i++) {
+      /* Only attempt to parse files with no lexing errors. */
+      lexer_errors[i] = DisplayErrors(tokens[i]);
+      if (lexer_errors[i] == 0) {
+        asts[i] = ParseTokens(tokens[i], argv[i + 2]);
+        exitcode = exitcode || CheckErrors(asts[i]);
+        PrintAST(asts[i]);
+      } else {
+        exitcode = 1;
+      }
+    }
+  }
+>>>>>>> d131e96a07341c217af534377ca6862ad38ce1f5
   for (int i = 0; i < boundaries[argc - 2]; i++) {
     FreeTokenList(tokens[i]);
   }
@@ -73,6 +124,17 @@ int main(int argc, char** argv) {
   free(files);
   free(boundaries);
   free(tokens);
+<<<<<<< HEAD
+=======
+  if (parse) {
+    for (i = 0; i < (argc - 2); i++) {
+      if (lexer_errors[i] == 0) {
+        FreeAST (asts[i]);
+      }
+    }
+    free (asts);
+  }
+>>>>>>> d131e96a07341c217af534377ca6862ad38ce1f5
 
   /* Exit if any file has errored. */
   if (exitcode) {
